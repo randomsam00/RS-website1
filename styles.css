@@ -106,9 +106,47 @@ nav {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: calc(var(--nav-h) + 4rem) 5% 6rem;
+  padding: calc(var(--nav-h) + 4rem) 5% 0;
   position: relative;
   overflow: hidden;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-end;
+  width: 100%;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-photo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 0 60px rgba(255, 45, 120, 0.2));
+}
+
+@media (max-width: 768px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+  .hero-photo {
+    display: none;
+  }
+  .hero {
+    padding-bottom: 4rem;
+  }
 }
 
 .hero-bg {
