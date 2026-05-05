@@ -133,7 +133,6 @@ nav {
   display: block;
   object-fit: contain;
   object-position: bottom;
-  filter: drop-shadow(0 0 60px rgba(255, 45, 120, 0.2));
 }
 
 @media (max-width: 768px) {
@@ -155,20 +154,18 @@ nav {
   pointer-events: none;
 }
 
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.25;
-  animation: float 8s ease-in-out infinite;
-}
-.blob-1 { width: 500px; height: 500px; background: var(--pink); top: -100px; right: -100px; animation-delay: 0s; }
-.blob-2 { width: 400px; height: 400px; background: var(--cyan); bottom: -50px; left: 10%; animation-delay: 2.5s; }
-.blob-3 { width: 300px; height: 300px; background: var(--yellow); top: 40%; left: 50%; animation-delay: 5s; }
+.blob { display: none; }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-30px) scale(1.05); }
+/* Static gradient replaces animated blobs — no repaints, same look */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 85% 15%, rgba(255,45,120,0.2) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 40% at 12% 85%, rgba(0,229,255,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 30% at 62% 50%, rgba(255,214,0,0.08) 0%, transparent 65%);
 }
 
 .hero-content {
@@ -329,12 +326,9 @@ section { padding: 6rem 5%; }
 .about::before {
   content: '';
   position: absolute;
-  top: -200px; right: -200px;
-  width: 500px; height: 500px;
-  background: var(--yellow);
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.06;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 60% at 90% 10%, rgba(255,214,0,0.06) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .about-grid {
@@ -505,12 +499,9 @@ section { padding: 6rem 5%; }
 .ugc-preview::before {
   content: '';
   position: absolute;
-  bottom: -200px; left: -100px;
-  width: 500px; height: 500px;
-  background: var(--pink);
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.07;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 60% at 5% 90%, rgba(255,45,120,0.07) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .ugc-preview-inner {
@@ -714,14 +705,7 @@ footer p { font-size: 0.8rem; color: var(--gray); }
 .category-card.games { background: linear-gradient(135deg, #130820, #0d0d0d); border-color: rgba(178,75,243,0.2); }
 .category-card.dogs { background: linear-gradient(135deg, #1a0d00, #0d0d0d); border-color: rgba(255,107,53,0.2); }
 
-.category-glow {
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 200px; height: 200px;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.3;
-}
+.category-glow { display: none; }
 .alcohol .category-glow { background: #FFD700; }
 .swim .category-glow { background: var(--cyan); }
 .games .category-glow { background: var(--purple); }
