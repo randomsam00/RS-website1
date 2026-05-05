@@ -132,9 +132,10 @@ nav {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to left,  var(--bg) 0%, transparent 25%),
-    linear-gradient(to right, var(--bg) 0%, transparent 15%),
-    linear-gradient(to top,   var(--bg) 0%, transparent 12%);
+    linear-gradient(to bottom, var(--bg) 0%, transparent 45%),
+    linear-gradient(to left,   var(--bg) 0%, transparent 35%),
+    linear-gradient(to right,  var(--bg) 0%, transparent 25%),
+    linear-gradient(to top,    var(--bg) 0%, transparent 20%);
   pointer-events: none;
   z-index: 2;
 }
@@ -148,6 +149,7 @@ nav {
   object-position: bottom;
   position: relative;
   z-index: 1;
+  mix-blend-mode: lighten;
 }
 
 @media (max-width: 768px) {
