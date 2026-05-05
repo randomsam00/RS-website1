@@ -124,6 +124,19 @@ nav {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  position: relative;
+}
+
+.hero-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to left,  var(--bg) 0%, transparent 25%),
+    linear-gradient(to right, var(--bg) 0%, transparent 15%),
+    linear-gradient(to top,   var(--bg) 0%, transparent 12%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .hero-img {
@@ -133,7 +146,8 @@ nav {
   display: block;
   object-fit: contain;
   object-position: bottom;
-  mix-blend-mode: lighten;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
