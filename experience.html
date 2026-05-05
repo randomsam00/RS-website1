@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Random Sam — By the numbers. 1B+ views, 1.53M YouTube subscribers, 9+ brand partnerships." />
+  <title>Experience &amp; Stats | Random Sam</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── PAGE-SPECIFIC STYLES ── */
+
+    .exp-hero {
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-h) + 5rem) 5% 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-hero .blob-1 { background: var(--cyan); top: -80px; right: 5%; }
+    .exp-hero .blob-2 { background: var(--pink); bottom: -60px; left: 15%; }
+    .exp-hero .blob-3 { background: var(--yellow); top: 30%; left: 55%; }
+
+    .exp-hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .exp-hero .section-tag { color: var(--cyan); }
+
+    /* ── BIG NUMBERS BANNER ── */
+    .big-numbers {
+      background: linear-gradient(135deg, rgba(255,45,120,0.08), rgba(0,229,255,0.08));
+      border-top: 1px solid rgba(255,45,120,0.15);
+      border-bottom: 1px solid rgba(0,229,255,0.15);
+      padding: 4rem 5%;
+    }
+    .big-numbers-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .big-num-item { padding: 1rem; }
+    .big-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+    .big-num.pink { color: var(--pink); text-shadow: 0 0 40px rgba(255,45,120,0.4); }
+    .big-num.yellow { color: var(--yellow); text-shadow: 0 0 40px rgba(255,214,0,0.4); }
+    .big-num.cyan { color: var(--cyan); text-shadow: 0 0 40px rgba(0,229,255,0.4); }
+    .big-num.purple { color: var(--purple); text-shadow: 0 0 40px rgba(178,75,243,0.4); }
+    .big-num-label {
+      font-size: 0.8rem;
+      color: var(--gray-light);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .big-num-sub {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-top: 0.25rem;
+    }
+
+    /* ── PLATFORM BREAKDOWN ── */
+    .platform-breakdown { max-width: 1200px; margin: 0 auto; }
+
+    .platform-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .platform-detail-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.25s;
+    }
+    .platform-detail-card:hover { transform: translateY(-4px); }
+    .platform-detail-card.yt { border-left: 3px solid #FF0000; }
+    .platform-detail-card.fb { border-left: 3px solid #1877F2; }
+    .platform-detail-card.ig { border-left: 3px solid var(--purple); }
+    .platform-detail-card.tt { border-left: 3px solid var(--cyan); }
+
+    .pd-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .pd-platform {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .pd-icon { font-size: 1.75rem; }
+    .pd-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+    }
+    .pd-handle { font-size: 0.8rem; color: var(--gray); margin-top: 1px; }
+    .pd-main-stat {
+      text-align: right;
+    }
+    .pd-main-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+    .yt .pd-main-num { color: #FF4444; }
+    .fb .pd-main-num { color: #4d9cf5; }
+    .ig .pd-main-num { color: var(--purple); }
+    .tt .pd-main-num { color: var(--cyan); }
+    .pd-main-label { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+
+    .pd-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .pd-stat { text-align: center; }
+    .pd-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+    .pd-stat-label { font-size: 0.7rem; color: var(--gray); letter-spacing: 0.5px; }
+
+    /* ── BRAND PORTFOLIO ── */
+    .brand-portfolio { background: var(--surface); }
+    .brand-portfolio-inner { max-width: 1200px; margin: 0 auto; }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .brand-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .brand-card:hover { transform: translateY(-3px); }
+    .brand-card:hover .brand-icon-box { transform: scale(1.1); }
+
+    .brand-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    .brand-info { flex: 1; min-width: 0; }
+    .brand-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-category {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .brand-type {
+      font-size: 0.78rem;
+      color: var(--gray-light);
+    }
+
+    /* Brand color variants */
+    .brand-card.beauty { border-color: rgba(255,45,120,0.2); }
+    .brand-card.beauty:hover { border-color: var(--pink); }
+    .brand-card.beauty .brand-icon-box { background: rgba(255,45,120,0.12); }
+
+    .brand-card.wellness { border-color: rgba(0,229,255,0.2); }
+    .brand-card.wellness:hover { border-color: var(--cyan); }
+    .brand-card.wellness .brand-icon-box { background: rgba(0,229,255,0.12); }
+
+    .brand-card.personal-care { border-color: rgba(255,107,53,0.2); }
+    .brand-card.personal-care:hover { border-color: var(--orange); }
+    .brand-card.personal-care .brand-icon-box { background: rgba(255,107,53,0.12); }
+
+    .brand-card.finance { border-color: rgba(178,75,243,0.2); }
+    .brand-card.finance:hover { border-color: var(--purple); }
+    .brand-card.finance .brand-icon-box { background: rgba(178,75,243,0.12); }
+
+    .brand-card.pet { border-color: rgba(255,214,0,0.2); }
+    .brand-card.pet:hover { border-color: var(--yellow); }
+    .brand-card.pet .brand-icon-box { background: rgba(255,214,0,0.12); }
+
+    .brand-card.swimwear { border-color: rgba(0,229,255,0.2); }
+    .brand-card.swimwear:hover { border-color: var(--cyan); }
+    .brand-card.swimwear .brand-icon-box { background: rgba(0,229,255,0.12); }
+
+    .brand-card.entertainment { border-color: rgba(178,75,243,0.2); }
+    .brand-card.entertainment:hover { border-color: var(--purple); }
+    .brand-card.entertainment .brand-icon-box { background: rgba(178,75,243,0.12); }
+
+    /* ── CONTENT SHOWCASE ── */
+    .content-showcase-inner { max-width: 1200px; margin: 0 auto; }
+
+    .content-type-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .content-type-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.25s;
+    }
+    .content-type-card:hover { transform: translateY(-4px); }
+
+    .ctc-thumb {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+    }
+    .ctc-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .content-type-card:hover .ctc-thumb::after { opacity: 1; }
+
+    .ctc-thumb.comedy { background: linear-gradient(135deg, #1a0010, #0d0d0d); }
+    .ctc-thumb.lifestyle { background: linear-gradient(135deg, #001520, #0d0d0d); }
+    .ctc-thumb.ugc-vid { background: linear-gradient(135deg, #130820, #0d0d0d); }
+
+    .ctc-body { padding: 1.5rem; }
+    .ctc-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .comedy .ctc-label { color: var(--pink); }
+    .lifestyle .ctc-label { color: var(--cyan); }
+    .ugc-vid .ctc-label { color: var(--purple); }
+
+    .ctc-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+    }
+    .ctc-desc { font-size: 0.85rem; color: var(--gray-light); line-height: 1.6; }
+
+    .viral-callout {
+      background: linear-gradient(135deg, rgba(255,214,0,0.08), rgba(255,45,120,0.08));
+      border: 1px solid rgba(255,214,0,0.25);
+      border-radius: 20px;
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .viral-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      letter-spacing: 2px;
+      color: var(--yellow);
+      text-shadow: 0 0 60px rgba(255,214,0,0.4);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .viral-text h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+    .viral-text p { color: var(--gray-light); font-size: 0.95rem; max-width: 500px; }
+
+    /* ── AUDIENCE SECTION ── */
+    .audience-section { background: var(--surface); }
+    .audience-inner { max-width: 1200px; margin: 0 auto; }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .audience-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .audience-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .audience-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+    }
+    .audience-card p { font-size: 0.875rem; color: var(--gray-light); line-height: 1.6; }
+
+    /* ── MEDIA KIT CTA ── */
+    .media-kit-cta {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .media-kit-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(0,229,255,0.1), transparent 70%);
+      pointer-events: none;
+    }
+    .media-kit-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .media-kit-cta .section-tag { color: var(--yellow); }
+
+    .media-kit-box {
+      background: linear-gradient(135deg, rgba(0,229,255,0.08), rgba(178,75,243,0.08));
+      border: 1px solid rgba(0,229,255,0.2);
+      border-radius: 24px;
+      padding: 3rem;
+      margin-top: 2rem;
+    }
+    .media-kit-box h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .media-kit-box p { color: var(--gray-light); margin-bottom: 2rem; }
+    .media-kit-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .mk-feature {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      color: var(--gray-light);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .big-numbers-inner { grid-template-columns: repeat(2, 1fr); }
+      .platform-detail-grid { grid-template-columns: 1fr; }
+      .brands-grid { grid-template-columns: repeat(2, 1fr); }
+      .content-type-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .brands-grid { grid-template-columns: 1fr; }
+      .big-numbers-inner { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .viral-callout { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">RANDOM SAM</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#content">Content</a></li>
+      <li><a href="ugc.html">Brand Work</a></li>
+      <li><a href="experience.html" style="color:var(--white)">Experience</a></li>
+      <li><a href="ugc.html#inquiry" class="nav-cta">Work With Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="exp-hero">
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="exp-hero-content fade-up">
+      <span class="section-tag">Credibility &amp; Experience</span>
+      <h1 class="section-title" style="font-size: clamp(3rem, 9vw, 7rem); margin-bottom: 1.25rem;">
+        THE NUMBERS<br/>
+        <span style="background: linear-gradient(135deg, var(--cyan), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">DON'T LIE.</span>
+      </h1>
+      <p style="font-size: clamp(1rem, 2vw, 1.2rem); color: var(--gray-light); max-width: 600px; margin-bottom: 2.5rem; line-height: 1.7;">
+        Over <strong style="color:var(--white)">1 billion views</strong> on YouTube alone. Active across 4 platforms with
+        <strong style="color:var(--white)">1.88M+ combined followers</strong> and a proven track record of delivering
+        real results for brands people actually care about.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+        <a href="#brands" class="btn btn-primary">&#127775; See Brand Portfolio</a>
+        <a href="ugc.html#inquiry" class="btn btn-outline">Work With Me &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG NUMBERS -->
+  <div class="big-numbers">
+    <div class="big-numbers-inner">
+      <div class="big-num-item fade-up">
+        <div class="big-num pink">1B+</div>
+        <div class="big-num-label">YouTube Views</div>
+        <div class="big-num-sub">Total channel lifetime views</div>
+      </div>
+      <div class="big-num-item fade-up">
+        <div class="big-num yellow">1.53M</div>
+        <div class="big-num-label">YouTube Subscribers</div>
+        <div class="big-num-sub">Organic, engaged audience</div>
+      </div>
+      <div class="big-num-item fade-up">
+        <div class="big-num cyan">1.88M+</div>
+        <div class="big-num-label">Cross-Platform Reach</div>
+        <div class="big-num-sub">YouTube · TikTok · Instagram · Facebook</div>
+      </div>
+      <div class="big-num-item fade-up">
+        <div class="big-num purple">9+</div>
+        <div class="big-num-label">Brand Partnerships</div>
+        <div class="big-num-sub">Completed UGC campaigns</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PLATFORM BREAKDOWN -->
+  <section style="padding: 6rem 5%;">
+    <div class="platform-breakdown">
+      <div class="fade-up" style="margin-bottom:3rem;">
+        <span class="section-tag">Platform Breakdown</span>
+        <h2 class="section-title">WHERE I SHOW UP</h2>
+        <p class="section-subtitle">Consistent, active presence across every major platform — not just one.</p>
+      </div>
+      <div class="platform-detail-grid">
+
+        <!-- YouTube -->
+        <div class="platform-detail-card yt fade-up">
+          <div class="pd-header">
+            <div class="pd-platform">
+              <span class="pd-icon">&#9654;&#65039;</span>
+              <div>
+                <div class="pd-name">YouTube</div>
+                <div class="pd-handle">@random-sam</div>
+              </div>
+            </div>
+            <div class="pd-main-stat">
+              <div class="pd-main-num">1.53M</div>
+              <div class="pd-main-label">Subscribers</div>
+            </div>
+          </div>
+          <div class="pd-stats">
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:#FF4444;">1B+</div>
+              <div class="pd-stat-label">Total Views</div>
+            </div>
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:#FF4444;">2022</div>
+              <div class="pd-stat-label">Channel Since</div>
+            </div>
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:#FF4444;">Shorts</div>
+              <div class="pd-stat-label">Primary Format</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Facebook -->
+        <div class="platform-detail-card fb fade-up">
+          <div class="pd-header">
+            <div class="pd-platform">
+              <span class="pd-icon">&#128100;</span>
+              <div>
+                <div class="pd-name">Facebook</div>
+                <div class="pd-handle">random-sam.com/facebook</div>
+              </div>
+            </div>
+            <div class="pd-main-stat">
+              <div class="pd-main-num">174K</div>
+              <div class="pd-main-label">Followers</div>
+            </div>
+          </div>
+          <div class="pd-stats">
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:#4d9cf5;">Video</div>
+              <div class="pd-stat-label">Top Format</div>
+            </div>
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:#4d9cf5;">High</div>
+              <div class="pd-stat-label">Engagement</div>
+            </div>
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:#4d9cf5;">25-44</div>
+              <div class="pd-stat-label">Core Demo</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instagram -->
+        <div class="platform-detail-card ig fade-up">
+          <div class="pd-header">
+            <div class="pd-platform">
+              <span class="pd-icon">&#128247;</span>
+              <div>
+                <div class="pd-name">Instagram</div>
+                <div class="pd-handle">@_random.sam</div>
+              </div>
+            </div>
+            <div class="pd-main-stat">
+              <div class="pd-main-num">92.7K</div>
+              <div class="pd-main-label">Followers</div>
+            </div>
+          </div>
+          <div class="pd-stats">
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:var(--purple);">Reels</div>
+              <div class="pd-stat-label">Top Format</div>
+            </div>
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:var(--purple);">Stories</div>
+              <div class="pd-stat-label">Daily Updates</div>
+            </div>
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:var(--purple);">18-34</div>
+              <div class="pd-stat-label">Core Demo</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TikTok -->
+        <div class="platform-detail-card tt fade-up">
+          <div class="pd-header">
+            <div class="pd-platform">
+              <span class="pd-icon">&#127925;</span>
+              <div>
+                <div class="pd-name">TikTok</div>
+                <div class="pd-handle">@_random.sam</div>
+              </div>
+            </div>
+            <div class="pd-main-stat">
+              <div class="pd-main-num">81.6K</div>
+              <div class="pd-main-label">Followers</div>
+            </div>
+          </div>
+          <div class="pd-stats">
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:var(--cyan);">Comedy</div>
+              <div class="pd-stat-label">Top Niche</div>
+            </div>
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:var(--cyan);">Trending</div>
+              <div class="pd-stat-label">Sounds &amp; FYP</div>
+            </div>
+            <div class="pd-stat">
+              <div class="pd-stat-num" style="color:var(--cyan);">18-30</div>
+              <div class="pd-stat-label">Core Demo</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VIRAL CALLOUT + CONTENT SHOWCASE -->
+  <section style="padding: 6rem 5%;">
+    <div class="content-showcase-inner">
+      <div class="fade-up" style="margin-bottom:3rem;">
+        <span class="section-tag">Content Performance</span>
+        <h2 class="section-title">WHAT I CREATE</h2>
+        <p class="section-subtitle">Comedy-forward content that stops the scroll and keeps people coming back.</p>
+      </div>
+
+      <!-- Viral moment callout -->
+      <div class="viral-callout fade-up" style="margin-bottom: 3rem;">
+        <div class="viral-num">95M+</div>
+        <div class="viral-text">
+          <h3>VIEWS ON A SINGLE VIDEO</h3>
+          <p>One comedy Short — a wine bottle opening hack gone hilariously wrong — racked up over 95 million views, proving that authentic, unscripted moments hit harder than any produced campaign. This is the kind of content I make every day.</p>
+          <a href="https://www.youtube.com/@random-sam" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:1.25rem; padding: 0.5rem 1.25rem; font-size:0.85rem;">Watch on YouTube &#8594;</a>
+        </div>
+      </div>
+
+      <div class="content-type-grid">
+        <div class="content-type-card comedy fade-up">
+          <div class="ctc-thumb comedy">&#127917;</div>
+          <div class="ctc-body">
+            <div class="ctc-label">Comedy &amp; Pranks</div>
+            <div class="ctc-title">UNSCRIPTED CHAOS</div>
+            <p class="ctc-desc">Real pranks, husband &amp; friends content, and everyday moments that turn into viral gold. My comedy niche has driven 1B+ total YouTube views.</p>
+          </div>
+        </div>
+        <div class="content-type-card lifestyle fade-up">
+          <div class="ctc-thumb lifestyle">&#127775;</div>
+          <div class="ctc-body">
+            <div class="ctc-label">Lifestyle &amp; DIY</div>
+            <div class="ctc-title">REAL LIFE, REAL FUN</div>
+            <p class="ctc-desc">Cooking, DIY hacks, and everyday lifestyle content. Relatable, watchable, and shareable — the perfect environment for brand integrations.</p>
+          </div>
+        </div>
+        <div class="content-type-card ugc-vid fade-up">
+          <div class="ctc-thumb ugc-vid">&#128247;</div>
+          <div class="ctc-body">
+            <div class="ctc-label">Brand UGC</div>
+            <div class="ctc-title">CONTENT THAT CONVERTS</div>
+            <p class="ctc-desc">Dedicated UGC content for 9+ brands across beauty, wellness, pet, finance, games, and swimwear. Always on-brand, always authentic.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BRAND PORTFOLIO -->
+  <section class="brand-portfolio" id="brands" style="padding: 6rem 5%;">
+    <div class="brand-portfolio-inner">
+      <div class="fade-up" style="margin-bottom: 3rem;">
+        <span class="section-tag">Proven Track Record</span>
+        <h2 class="section-title">BRANDS I'VE WORKED WITH</h2>
+        <p class="section-subtitle">From skincare to board games — real campaigns, real results.</p>
+      </div>
+      <div class="brands-grid">
+
+        <div class="brand-card beauty fade-up">
+          <div class="brand-icon-box">&#127804;</div>
+          <div class="brand-info">
+            <div class="brand-name">Anua</div>
+            <div class="brand-category">Beauty &amp; Skincare</div>
+            <div class="brand-type">Face spray UGC · Korean beauty brand</div>
+          </div>
+        </div>
+
+        <div class="brand-card wellness fade-up">
+          <div class="brand-icon-box">&#9889;</div>
+          <div class="brand-info">
+            <div class="brand-name">Proper Wild</div>
+            <div class="brand-category">Wellness &amp; Energy</div>
+            <div class="brand-type">Clean energy shots UGC</div>
+          </div>
+        </div>
+
+        <div class="brand-card finance fade-up">
+          <div class="brand-icon-box">&#128176;</div>
+          <div class="brand-info">
+            <div class="brand-name">Monarch Money</div>
+            <div class="brand-category">Personal Finance</div>
+            <div class="brand-type">App UGC &amp; lifestyle integration</div>
+          </div>
+        </div>
+
+        <div class="brand-card personal-care fade-up">
+          <div class="brand-icon-box">&#128166;</div>
+          <div class="brand-info">
+            <div class="brand-name">Dude Wipes</div>
+            <div class="brand-category">Personal Care</div>
+            <div class="brand-type">Lifestyle &amp; humor-forward UGC</div>
+          </div>
+        </div>
+
+        <div class="brand-card personal-care fade-up">
+          <div class="brand-icon-box">&#128704;</div>
+          <div class="brand-info">
+            <div class="brand-name">Bidet Brand</div>
+            <div class="brand-category">Home &amp; Personal Care</div>
+            <div class="brand-type">Product demo &amp; lifestyle UGC</div>
+          </div>
+        </div>
+
+        <div class="brand-card pet fade-up">
+          <div class="brand-icon-box">&#128054;</div>
+          <div class="brand-info">
+            <div class="brand-name">Pet Lab Co.</div>
+            <div class="brand-category">Pet Health &amp; Wellness</div>
+            <div class="brand-type">Pet supplement UGC</div>
+          </div>
+        </div>
+
+        <div class="brand-card swimwear fade-up">
+          <div class="brand-icon-box">&#128025;</div>
+          <div class="brand-info">
+            <div class="brand-name">Salty Me</div>
+            <div class="brand-category">Swimwear &amp; Lifestyle</div>
+            <div class="brand-type">Fitting UGC · Beach launch event</div>
+          </div>
+        </div>
+
+        <div class="brand-card entertainment fade-up">
+          <div class="brand-icon-box">&#127921;</div>
+          <div class="brand-info">
+            <div class="brand-name">Tapple</div>
+            <div class="brand-category">Board Games &amp; Entertainment</div>
+            <div class="brand-type">Gameplay UGC · Buffalo Games</div>
+          </div>
+        </div>
+
+        <div class="brand-card entertainment fade-up">
+          <div class="brand-icon-box">&#127908;</div>
+          <div class="brand-info">
+            <div class="brand-name">Grab the Mic</div>
+            <div class="brand-category">Entertainment &amp; Games</div>
+            <div class="brand-type">Product UGC &amp; demo content</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- AUDIENCE -->
+  <section class="audience-section" style="padding: 6rem 5%;">
+    <div class="audience-inner">
+      <div class="fade-up" style="margin-bottom: 3rem;">
+        <span class="section-tag">Who's Watching</span>
+        <h2 class="section-title">MY AUDIENCE</h2>
+        <p class="section-subtitle">A real, engaged community that trusts my voice and buys what I recommend.</p>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card fade-up">
+          <span class="audience-icon">&#127775;</span>
+          <h3>HIGHLY ENGAGED</h3>
+          <p>My audience doesn't just scroll past — they comment, share, and come back. Comedy content naturally drives the highest engagement rates on any platform.</p>
+        </div>
+        <div class="audience-card fade-up">
+          <span class="audience-icon">&#128101;</span>
+          <h3>PRIMARILY 18–34</h3>
+          <p>Young adults across TikTok and Instagram, with a broader 25–44 demographic on YouTube and Facebook — high purchasing power, brand-aware, and trend-driven.</p>
+        </div>
+        <div class="audience-card fade-up">
+          <span class="audience-icon">&#127757;</span>
+          <h3>MULTI-PLATFORM</h3>
+          <p>Followers across YouTube, TikTok, Instagram, and Facebook. Your campaign gets exposure on every major platform — not just one. Maximum reach, one creator.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MEDIA KIT CTA -->
+  <section class="media-kit-cta" style="padding: 6rem 5%;">
+    <div class="media-kit-inner fade-up">
+      <span class="section-tag">Ready to Partner?</span>
+      <h2 class="section-title">GET MY<br/><span class="text-cyan">MEDIA KIT</span></h2>
+      <div class="media-kit-box">
+        <h3>EVERYTHING YOU NEED TO MAKE THE CALL</h3>
+        <p>My full media kit includes detailed platform analytics, audience demographics, past campaign examples, content packages, and rate cards. Request it directly below.</p>
+        <div class="media-kit-features">
+          <span class="mk-feature">&#128200; Platform Analytics</span>
+          <span class="mk-feature">&#127775; Audience Demographics</span>
+          <span class="mk-feature">&#128247; Past Campaign Examples</span>
+          <span class="mk-feature">&#128176; Rate Cards</span>
+          <span class="mk-feature">&#128293; Content Packages</span>
+        </div>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <a href="ugc.html#inquiry" class="btn btn-primary">&#128178; Request Media Kit</a>
+          <a href="ugc.html" class="btn btn-outline">View UGC Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="footer-logo">RANDOM SAM</a>
+    <p>&copy; 2025 Random Sam. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="ugc.html">Brand Work</a>
+      <a href="experience.html">Experience</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
